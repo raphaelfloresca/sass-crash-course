@@ -1,0 +1,41 @@
+// setting a variable for a colour
+$light-color: #f4f4f4;
+// setting a variable for a set of fonts
+$font-stack: Arial, Helvetica, sans-serif;
+$primary-color: #0e6cff;
+// $primary-color: #e0ffff;
+$secondary-color: #ff8700;
+
+// Set text colour based on background
+// You can use a function to return different values using conditionals
+@function set-text-color($color) {
+    @if(lightness($color) > 70) {
+        @return #333;
+    }   @else {
+        @return #fff;
+    }
+}
+
+// Set background & text colour using a mixin
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+// Margin and padding classes
+$spaceamounts: (1,2,3,4,5);
+
+@each $space in $spaceamounts {
+    .m-#{$space} {
+        margin: #{$space}rem 0;
+    }
+    .my-#{$space} {
+        margin: #{$space}rem 0;
+    }
+    .p-#{$space} {
+        padding: #{$space}rem 0;
+    }
+    .py-#{$space} {
+        margin: #{$space}rem 0;
+    }
+}
